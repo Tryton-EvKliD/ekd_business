@@ -1,1 +1,207 @@
-/home/trytond-1.8.2/trytond/modules/ekd_business/xml/ekd_business.xml
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data>
+
+    <!--
+         Entries lines - Строки проводок
+    -->
+    <record model="res.group" id="group_business">
+        <field name="name">Business</field>
+    </record>
+    <record model="res.group" id="group_business_admin">
+        <field name="name">Business Administration</field>
+    </record>
+    <record model="res.user" id="res.user_admin">
+        <field name="groups" 
+            eval="[('add', ref('group_business')), ('add', ref('group_business_admin'))]"/>
+    </record>
+
+     <record id="view_business_tree" model="ir.ui.view">
+             <field name="model">ekd.business</field>
+            <field name="type">tree</field>
+            <field eval="4" name="priority"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Business">
+                    <field name="name" select="2"/>
+                    <field name="shortname"/>
+                    <field name="code"/>
+                    <field name="code_legal"/>
+                    <field name="parent"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="active"/>
+                </tree>
+                ]]>
+            </field>
+    </record>
+
+    <record id="view_business_form" model="ir.ui.view">
+            <field name="model">ekd.business</field>
+            <field name="type">form</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Business">
+                    <group colspan="2" col="4" id="main_head">
+                        <label name="name" />
+                        <field name="name" />
+                        <label name="shortname" />
+                        <field name="shortname" />
+                        <label name="code" />
+                        <field name="code" />
+                        <label name="code_legal" />
+                        <field name="code_legal" />
+                        <label name="system_tax" />
+                        <field name="system_tax" />
+                        <label name="parent" />
+                        <field name="parent" />
+                        <label name="start_date" />
+                        <field name="start_date" />
+                        <label name="end_date" />
+                        <field name="end_date" />
+                        <label name="active" />
+                        <field name="active" />
+                    </group>
+<!-->
+                    <notebook>
+                        <page id="childs">
+                            <field name="childs" />
+                        </page>
+                        <page id="companies">
+                            <field name="companies" />
+                        </page>
+                        <page id="employees">
+                            <field name="employees" />
+                        </page>
+                        <page id="users">
+                            <field name="users" />
+                        </page>
+                    </notebook>
+<-->
+                </form>
+                ]]>
+            </field>
+    </record>
+
+    <record model="ir.action.act_window" id="act_business_form">
+        <field name="name">Business</field>
+        <field name="res_model">ekd.business</field>
+        <field name="view_type">form</field>
+    </record>
+    <record model="ir.action.act_window.view" id="act_business_form_view1">
+        <field name="sequence" eval="10"/>
+        <field name="view" ref="view_business_tree"/>
+        <field name="act_window" ref="act_business_form"/>
+    </record>
+    <record model="ir.action.act_window.view" id="act_business_form_view2">
+        <field name="sequence" eval="20"/>
+        <field name="view" ref="view_business_form"/>
+        <field name="act_window" ref="act_business_form"/>
+    </record>
+
+    <menuitem name="Business" parent="ekd_company.menu_company" action="act_business_form"
+            id="menu_business" groups="group_business,group_business_admin"
+                                sequence="10" icon="tryton-preferences"/>
+
+    <record model="ir.model.access" id="access_business1">
+        <field name="model" search="[('model', '=', 'ekd.business')]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+    <record model="ir.model.access" id="access_business2">
+        <field name="model" search="[('model', '=', 'ekd.business')]"/>
+        <field name="group" ref="group_business"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+    <record model="ir.model.access" id="access_business_admin">
+        <field name="model" search="[('model', '=', 'ekd.business')]"/>
+        <field name="group" ref="group_business_admin"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="True"/>
+    </record>
+
+    <record model="ir.model.access" id="access_business1_company">
+        <field name="model" search="[('model', '=', 'ekd.business.company')]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+    <record model="ir.model.access" id="access_business2_company">
+        <field name="model" search="[('model', '=', 'ekd.business.company')]"/>
+        <field name="group" ref="group_business"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+    <record model="ir.model.access" id="access_business_company_admin">
+        <field name="model" search="[('model', '=', 'ekd.business.company')]"/>
+        <field name="group" ref="group_business_admin"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="True"/>
+    </record>
+
+<!-->
+    <record model="ir.model.access" id="access_business1_user">
+        <field name="model" search="[('model', '=', 'ekd.business.user')]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+    <record model="ir.model.access" id="access_business2_user">
+        <field name="model" search="[('model', '=', 'ekd.business.user')]"/>
+        <field name="group" ref="group_business"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+    <record model="ir.model.access" id="access_business_user_admin">
+        <field name="model" search="[('model', '=', 'ekd.business.user')]"/>
+        <field name="group" ref="group_business_admin"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="True"/>
+    </record>
+    <record model="ir.model.access" id="access_business1_employee">
+        <field name="model" search="[('model', '=', 'ekd.business.employee')]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+
+    <record model="ir.model.access" id="access_business2_employee">
+        <field name="model" search="[('model', '=', 'ekd.business.employee')]"/>
+        <field name="group" ref="group_business"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+    <record model="ir.model.access" id="access_business_employee_admin">
+        <field name="model" search="[('model', '=', 'ekd.business.employee')]"/>
+        <field name="group" ref="group_business_admin"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="True"/>
+    </record>
+
+<-->
+
+    </data>
+</tryton>

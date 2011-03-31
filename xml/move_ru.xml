@@ -1,1 +1,42 @@
-/home/trytond-1.8.2/trytond/modules/ekd_business/xml/move_ru.xml
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data>
+<!-->
+     <record id="view_move_ru_tree_business" model="ir.ui.view">
+             <field name="model">ekd.account.move</field>
+            <field name="type">tree</field>
+            <field eval="4" name="priority"/>
+            <field name="inherit" ref="ekd_account.view_move_ru_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/tree/field[@name=&quot;company&quot;]"
+                        position="after">
+                        <field name="business" tree_invisible="1" select="1"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+    </record>
+<-->
+    <record id="view_move_ru_form_business" model="ir.ui.view">
+            <field name="model">ekd.account.move</field>
+            <field name="type">form</field>
+            <field eval="2" name="priority"/>
+            <field name="inherit" ref="ekd_account.view_move_ru_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/group[@id=&quot;main_head&quot;]/field[@name=&quot;company&quot;]"
+                        position="after">
+                        <label name="business"/>
+                        <field colspan="1" name="business"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+    </record>
+    </data>
+</tryton>

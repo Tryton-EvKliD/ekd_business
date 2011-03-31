@@ -1,0 +1,66 @@
+type,name,res_id,src,value,fuzzy
+field,"account.ru.balances.account,business",0,Business,Деятельность,0
+field,"account.ru.balances.analytic,business",0,Business,Деятельность,0
+field,"account.ru.balances.finance,business",0,Business,Деятельность,0
+field,"account.ru.balances.party,business",0,Business,Деятельность,0
+field,"account.ru.balances.product,business",0,Business,Деятельность,0
+field,"account.ru.move,business",0,Business,Деятельность,0
+field,"company.company,businesses",0,Business,Вид деятельности,0
+field,"company.employee,business",0,Business,Вид деятельности,0
+field,"company.employee.business,business",0,Business,Вид деятельности,0
+field,"company.employee.business,employee",0,Company,Учет.орг.,0
+field,"company.employee.business,rec_name",0,Name,Наименование,0
+field,"ekd.account.move,business",0,Business,Вид деятельности,0
+field,"ekd.business,active",0,Active,Действительнный,0
+field,"ekd.business,childs",0,Children,Подчиненый,0
+field,"ekd.business,code",0,Internal Code,,0
+field,"ekd.business,code_legal",0,Code Legal,,0
+field,"ekd.business,companies",0,Child Company,,0
+field,"ekd.business,employees",0,Child Employee,,0
+field,"ekd.business,end_date",0,End date,Дата окончания,0
+field,"ekd.business,name",0,Name,Наименование,0
+field,"ekd.business,parent",0,Parent,Основной,0
+field,"ekd.business,rec_name",0,Name,Наименование,0
+field,"ekd.business,shortname",0,Short Name,Кратко,0
+field,"ekd.business,start_date",0,Start date,Дата начала,0
+field,"ekd.business,system_tax",0,System Tax,Система налогообложения,0
+field,"ekd.business,users",0,Child Employee,,0
+field,"ekd.business.company,business",0,Business,Деятельность,0
+field,"ekd.business.company,company",0,Company,Учетные организации,0
+field,"ekd.business.company,rec_name",0,Name,Наименование,0
+field,"ekd.business.employee,business",0,Business,Деятельность,0
+field,"ekd.business.employee,employee",0,Company,Учетные организации,0
+field,"ekd.business.employee,rec_name",0,Name,Наименование,0
+field,"ekd.business.user,business",0,Business,Деятельность,0
+field,"ekd.business.user,rec_name",0,Name,Наименование,0
+field,"ekd.business.user,users",0,Company,Учетные организации,0
+field,"ekd.company,business",0,Business,Деятельность,0
+field,"ekd.company,businesses",0,Business,Вид деятельности,0
+field,"ekd.document,business",0,Business,Деятельность,0
+field,"ekd.document.template,business",0,Business,Направление деятельности,0
+field,"ekd.employee,business",0,Business,Деятельность,0
+field,"ekd.employee.business,business",0,Business,Вид деятельности,0
+field,"ekd.employee.business,employee",0,Company,Учетные организации,0
+field,"ekd.employee.business,rec_name",0,Name,Наименование,0
+field,"ekd.template,business",0,Business,Деятельность,0
+field,"res.user,business",0,Business,Деятельность,0
+field,"res.user,businesses",0,Business,Вид деятельности,0
+field,"res.user.business,business",0,Business,Вид деятельности,0
+field,"res.user.business,rec_name",0,Name,Наименование,0
+field,"res.user.business,user",0,User,Пользователь,0
+model,"company.employee.business,name",0,Employee Business Multy,Виды деятельности,0
+model,"ekd.business,name",0,Business,Деятельность,0
+model,"ekd.business.company,name",0,Company Business Multy,,0
+model,"ekd.business.employee,name",0,Employee Business Multy,Виды деятельности,0
+model,"ekd.business.user,name",0,User Business Multy,Виды деятельности,0
+model,"ekd.employee.business,name",0,Employee Business Multy,Виды деятельности,0
+model,"ir.action,name",act_business_form,Business,Деятельность,0
+model,"ir.ui.menu,name",menu_business,Business,Деятельность,0
+model,"res.group,name",group_business,Business,Деятельность,0
+model,"res.group,name",group_business_admin,Business Administration,,0
+model,"res.user.business,name",0,User Business Multy,Виды деятельности,0
+view,company.company,0,Business,Направление деятельности,0
+view,ekd.business,0,Business,Деятельность,0
+view,ekd.company,0,Business,Деятельность,0
+view,ekd.employee,0,Business,Деятельность,0
+view,res.user,0,Businesses,Вид деятельности,0

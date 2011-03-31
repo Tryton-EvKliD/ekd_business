@@ -1,1 +1,41 @@
-/home/trytond-1.8.2/trytond/modules/ekd_business/xml/balance.xml
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data>
+     <record id="view_balances_account_tree_business" model="ir.ui.view">
+            <field name="model">ekd.balances.account</field>
+            <field name="type">tree</field>
+            <field eval="4" name="priority"/>
+            <field name="inherit" ref="ekd_account.view_balances_account_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/tree/field[@name=&quot;company&quot;]" 
+                        position="after">
+                            <field name="business"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+    </record>
+
+    <record id="view_balances_account_form_business" model="ir.ui.view">
+            <field name="model">ekd.balances.account</field>
+            <field name="type">form</field>
+            <field eval="2" name="priority"/>
+            <field name="inherit" ref="ekd_account.view_balances_account_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/group[@id=&quot;main_head&quot;]/group[@id=&quot;main_head&quot;]/field[@name=&quot;company&quot;]" 
+                        position="after">
+                        <label name="business"/>
+                        <field name="business" widget="selection"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+    </record>
+    </data>
+</tryton>

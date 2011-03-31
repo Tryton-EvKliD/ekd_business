@@ -1,1 +1,22 @@
-/home/trytond-1.8.2/trytond/modules/ekd_business/xml/ekd_doc_cash_view.xml
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data>
+        <record id="view_documents_cash_form_business" model="ir.ui.view">
+            <field name="model">ekd.document.head.cash</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="ekd_documents.view_documents_cash_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/group[@id=&quot;head&quot;]/group[@id=&quot;doc_head&quot;]/field[@name=&quot;company&quot;]"
+                        position="after">
+                        <label name="business"/>
+                        <field name="business"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>

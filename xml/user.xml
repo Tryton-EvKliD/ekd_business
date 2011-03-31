@@ -1,1 +1,39 @@
-/home/trytond-1.8.2/trytond/modules/ekd_business/xml/user.xml
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="user_view_form_business">
+            <field name="model">res.user</field>
+            <field name="inherit" ref="res.user_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <data>
+                        <xpath
+                            expr="/form/notebook/page/separator[@name=&quot;signature&quot;]"
+                            position="before">
+                            <group col="1" colspan="2" id="business">
+                                <separator string="Businesses" id="sep_business"/>
+                                <field name="businesses" height="100"/>
+                            </group>
+                        </xpath>
+                    </data>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="user_view_form_preferences_business">
+            <field name="model">res.user</field>
+            <field name="inherit" ref="res.user_view_form_preferences"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <data>
+                        <xpath
+                            expr="/form/notebook/page[@id=&quot;preferences&quot;]/group[@id=&quot;company&quot;]/field[@name=&quot;company&quot;]"
+                            position="after">
+                            <label name="business"/>
+                            <field name="business"/>
+                        </xpath>
+                    </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>

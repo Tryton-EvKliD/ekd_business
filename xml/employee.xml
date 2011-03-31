@@ -1,1 +1,30 @@
-/home/trytond-1.8.2/trytond/modules/ekd_business/xml/employee.xml
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="view_employee_form_business">
+            <field name="model">ekd.employee</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="ekd_company.employee_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@id=&quot;general&quot;]/group[@id=&quot;gr_spec&quot;]/group[@id=&quot;categories&quot;]"
+                        position="after">
+                        <group col="1" colspan="2" id="business">
+                            <separator string="Business" id="sep_business"/>
+                            <field name="business">
+                                <tree string="Business" fill="1">
+                                    <field name="rec_name" select="1"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
